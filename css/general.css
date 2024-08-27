@@ -1,0 +1,349 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto+Mono:wght@400..700&family=Nunito:wght@400..700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?"); */
+/*=============== VARIABLES CSS ===============*/
+:root {
+	--header-height: 3.5rem;
+
+	--first-color: #4535c1;
+	--first-color-alt: #36c2ce;
+	--second-color: rgb(223, 223, 32);
+	--gradient-color: linear-gradient(
+		120deg,
+		var(--first-color-alt) 60%,
+		rgb(255, 255, 4)
+	);
+
+	--primary-style: "Poppins", sans-serif;
+	--secondary-style: "Roboto Mono", monospace;
+	--secondary-style-alt: "Nunito", Nunito;
+	--larger-font-size: 2rem;
+	--large-font-size: 1.25rem;
+	--normal-font-size: 0.938rem;
+	--small-font-size: 0.813rem;
+	--smallest-font-size: 0.75rem;
+
+	--h1-font-size: 1.5rem;
+	--h2-font-size: 1.25rem;
+	--h3-font-size: 1rem;
+	--h4-font-size: 0.96rem;
+
+	--font-light: 400;
+	--font-medium: 500;
+	--font-semi-bold: 600;
+	--font-bold: 700;
+
+	--z-tooltip: 10;
+	--z-fixed: 100;
+}
+
+/* ========== Responsive typography ==========
+@media screen and (min-width: 1150px) {
+	:root {
+		--biggest-font-size: 5.5rem;
+		--normal-font-size: 1rem;
+	}
+} */
+
+/*=============== BASE ===============*/
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	scroll-behavior: smooth;
+	background-color: var(--gradient-color);
+}
+
+body {
+	font-family: var(--primary-style);
+	font-size: var(--normal-font-size);
+	overflow-x: hidden;
+	/* padding-bottom: 10rem; */
+}
+
+h1,
+h2,
+h3,
+h4 {
+	color: var(--title-color);
+	font-weight: var(--font-medium);
+	font-family: var(--secondary-style-alt);
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+img,
+svg {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+input,
+textarea,
+button,
+body {
+	font-family: var(--primary-style);
+	font-size: var(--normal-font-size);
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.section {
+	padding-inline: 1rem;
+}
+
+.section__title {
+	font-weight: var(--font-bold);
+	font-size: var(--larger-font-size);
+	font-family: var(--secondary-style-alt);
+	text-align: center;
+	margin-block: 0.5rem 1rem;
+}
+
+.btn {
+	color: white;
+	background-color: var(--first-color);
+	padding: 0.5rem 1.5rem;
+	font-size: var(--large-font-size);
+	font-weight: var(--font-semi-bold);
+	font-family: var(--secondary-style-alt);
+	transition: all 0.5s ease;
+	border: 2px solid var(--first-color);
+	border-radius: 4px;
+	display: inline-block;
+	text-align: center;
+	transition: color 0.2s ease-in, background-color 0.2s ease-in;
+}
+
+.btn:hover {
+	color: var(--first-color);
+	background-color: white;
+}
+
+.scroll_up {
+	position: fixed;
+	width: 2rem;
+	bottom: 1rem;
+	right: 1rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0.25rem;
+	background-color: white;
+	color: var(--first-color);
+	border: 1px solid var(--first-color);
+	cursor: pointer;
+	z-index: 80;
+	opacity: 0;
+	transition: opacity 0.5s ease-in;
+}
+
+/*=============== HEADER & NAV ===============*/
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	background-color: white;
+}
+
+.is-visible {
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+nav {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-inline: 1.5rem;
+	padding-block: 0.5rem;
+}
+
+.nav__logo {
+	width: 3.5rem;
+}
+
+.nav__toogle {
+	width: 2rem;
+	cursor: pointer;
+}
+
+.nav__list {
+	position: absolute;
+	top: 0;
+	left: -120%;
+	display: flex;
+	flex-direction: column;
+	padding-block: 5rem 2rem;
+	padding-inline: 2rem 3rem;
+	width: 100%;
+	background-color: white;
+	z-index: 110;
+	height: 100vh;
+	transition: left 0.4s ease;
+}
+
+.nav__list hr {
+	margin-block: 1rem;
+}
+
+.nav__list li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.nav__link {
+	font-size: 1rem;
+	/* font-size: 1.5rem; */
+	font-weight: var(--font-semi-bold);
+	transition: color 0.2s ease;
+}
+
+.nav__link:hover {
+	color: var(--second-color);
+}
+
+.nav__close-btn {
+	position: absolute;
+	right: 2rem;
+	width: 2rem;
+	top: 2rem;
+	cursor: pointer;
+}
+
+.nav__link-more-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0.25rem;
+	border-radius: 50%;
+	background-color: rgb(233, 223, 223);
+	cursor: pointer;
+}
+
+.nav__link-more-btn svg {
+	width: 1.25rem;
+	color: black;
+	transform: none;
+	transition: transform 0.25s ease;
+}
+
+.nav__link-subitem__list {
+	display: block;
+	padding-left: 2rem;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.25s ease-out;
+}
+
+.nav__link-subitem__list.show {
+	max-height: 300px;
+	transition: max-height 0.25s ease-in;
+}
+
+.nav__link-subitem__list li {
+	margin-bottom: 0.5rem;
+}
+
+.nav__link-subitem__list li a:hover {
+	color: var(--second-color);
+}
+
+/*=============== FOOTER ===============*/
+footer {
+	display: grid;
+	row-gap: 3rem;
+}
+
+.footer-content {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	column-gap: 1rem;
+	row-gap: 1.5rem;
+}
+
+.footet-cont img {
+	width: 10rem;
+}
+
+.footer-links {
+	display: flex;
+	column-gap: 0.7rem;
+	margin-block: 1rem;
+	justify-content: start;
+}
+
+.footer-links svg {
+	width: 1.25rem;
+	fill: var(--first-color);
+	opacity: 0.58;
+	cursor: pointer;
+}
+
+.footet-cont:nth-child(1) p,
+.footet-cont:nth-child(1) a {
+	display: inline-block;
+	margin-bottom: 0.3rem;
+}
+
+.footet-cont p:nth-child(1) {
+	font-size: 1rem;
+	font-weight: var(--font-semi-bold);
+	margin-bottom: 0.35rem;
+}
+
+.footet-cont ul li {
+	margin-bottom: 0.8rem;
+}
+
+.footet-cont a {
+	color: black;
+}
+
+.footet-cont a:hover {
+	color: var(--first-color);
+}
+.footer-rights p:nth-child(1) {
+	text-align: center;
+	margin-bottom: 1rem;
+}
+
+.footer-rights p:nth-child(2) {
+	text-align: center;
+	font-size: var(--smallest-font-size);
+}
+
+.footer-rights p:nth-child(2) span {
+	color: var(--first-color);
+	margin-bottom: 0.5rem;
+}
+/* Navigation for mobile devices */
+
+/* Show menu */
+
+/* Add blur header */
+
+/* Sakura petals */
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+
+/* For medium devices */
+
+/* For large devices */
+
+/* For 2K resolutions (2048 x 1152) */
+
+/* For taller devices */
